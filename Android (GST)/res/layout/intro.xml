@@ -1,0 +1,98 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".Principal" 
+    android:background="@color/Holo_gray">
+ 
+    		            
+            <!--  SEPARADOR 3 COLORES  -->
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="6dp"
+                android:background="@android:color/white"
+                android:weightSum="3" >
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_red" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_yellow" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_green" >
+	             </LinearLayout> 
+             </LinearLayout>
+             
+                
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <ImageButton
+                    android:id="@+id/myButton"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@null"
+                    android:layout_gravity="center"
+                    
+                    android:src="@drawable/icon_button" />
+
+                <TextView
+                    android:id="@+id/editText1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/myButton"
+                    android:text="@string/comenzar" 
+                    android:layout_gravity="center"
+                    android:layout_centerInParent="true"
+                    android:clickable="false"
+                    android:fontFamily="sans-serif-thin" >
+
+                    
+                </TextView>
+
+            </RelativeLayout>
+
+  		            
+            <!--  SEPARADOR 3 COLORES  -->
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="6dp"
+                android:background="@android:color/white"
+                android:weightSum="3" 
+                android:layout_alignParentBottom="true">
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_red" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_yellow" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_green" >
+	             </LinearLayout> 
+             </LinearLayout>
+
+</RelativeLayout>

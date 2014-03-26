@@ -1,0 +1,48 @@
+**** INCOMPLETE ****
+
+Montar raspbian
+
+--------------------------
+/etc/network/interfaces:
+--------------------------
+iface eth0 inet static
+   address 192.168.1.17
+   netmask 255.255.255.0
+   gateway 192.168.1.1
+   dns-nameservers 8.8.8.8 8.8.4.4
+
+iface wlan0 inet static
+   address 192.168.42.1
+   netmask 255.255.255.0
+
+/etc/resolv.conf:
+   nameserver 8.8.8.8
+   nameserver 8.8.4.4
+--------------------------
+
+SI LA KEY HA CAMBIADO: ssh-keygen -f ".ssh/known_hosts" -R 192.168.1.17
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install hostapd udhcpd bridge-utils iw dnsmasq
+
+
+--------------------------
+/etc/dnsmasq.conf:
+--------------------------
+domain=raspberry.local
+resolv-file=/etc/resolv.dnsmasq
+min-port=4096
+server=8.8.8.8
+server=8.8.4.4
+cache-size=10000
+
+dhcp-range=192.168.42.2,192.168.42.200,24h
+--------------------------
+
+sudo apt-get install libv4l-dev qv4l2 v4l-utils v4l2ucp
+sudo apt-get install gstreamer0.10-alsa gstreamer0.10-ffmpeg gstreamer0.10-fluendo-mp3 gstreamer0.10-plugins-base libgstreamer-plugins-base0.10-0 libgstreamer0.10-0 libgstreamer0.10-dev gstreamer0.10-plugins-good gstreamer0.10-plugins-ugly  gstreamer0.10-plugins-bad gstreamer0.10-tools
+
+
+Install this on OSX for testing on a MAC (using MacPorts):
+sudo port install gstreamer gst-plugins-base gst-plugins-good gst-plugins-bad

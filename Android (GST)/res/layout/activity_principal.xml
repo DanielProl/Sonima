@@ -1,0 +1,253 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    tools:context=".Principal" 
+    android:weightSum="5">
+ 
+    
+    <!--  comments  
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:weightSum="5" >   -->
+            
+             <LinearLayout
+                 android:id="@+id/layout3"
+                 android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:background="@color/Holo_gray"
+                android:layout_gravity="center" >
+                
+                    <ImageButton
+	                    android:id="@+id/backB"
+	                    android:layout_width="60dp"
+	                    android:layout_height="35dp"
+	                    android:background="@null"
+	                    android:layout_marginLeft="5dp"
+	                    
+	                    android:src="@drawable/icon_back"
+	                    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"
+	                />
+                    
+                    <View
+				        android:layout_width="0dp"
+				        android:layout_height="1dp"
+				        android:layout_weight="1" >
+				    </View>
+				    
+                    <ToggleButton
+	                    android:id="@+id/camB"
+	                    android:layout_width="50dp"
+	                    android:layout_height="30dp" 
+					    android:checked="false"
+					    android:background="@drawable/icon_cam"
+					    android:textOn=""
+					    android:textOff=""
+	                    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"
+	                />
+                    <View
+				        android:layout_width="0dp"
+				        android:layout_height="1dp"
+				        android:layout_weight="1" >
+				    </View>
+				      
+                    <ToggleButton
+	                    android:id="@+id/docB"
+	                    android:layout_width="25dp"
+	                    android:layout_height="30dp" 
+					    android:checked="false"
+					    android:background="@drawable/icon_doc"
+					    android:textOn=""
+					    android:textOff=""
+					    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"
+
+	                />
+                    <View
+				        android:layout_width="0dp"
+				        android:layout_height="1dp"
+				        android:layout_weight="1" >
+				    </View>
+				    
+                    <ToggleButton
+	                    android:id="@+id/camB2"
+	                    android:layout_width="50dp"
+	                    android:layout_height="30dp" 
+					    android:checked="false"
+					    android:background="@drawable/icon_cam"
+					    android:textOn=""
+					    android:textOff=""
+	                    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"
+	                    android:layout_marginRight="25dp"
+	                />
+                    
+             </LinearLayout>
+             
+             		            
+            <!--  SEPARADOR 3 COLORES  -->
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:weightSum="3" >
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_red" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_yellow" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_green" >
+	             </LinearLayout> 
+             </LinearLayout>
+
+             
+             <!--  CODIGO ANTIGUO
+            <LinearLayout
+                android:id="@+id/camara_layout"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_weight="2"
+                android:background="@color/Holo_red" >
+            <ProgressBar
+        		android:id="@+id/progressBar"
+        		android:layout_width="fill_parent"
+        		android:layout_height="wrap_content"/>
+            
+                <WebView
+                    android:id="@+id/webview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                </WebView>
+            </LinearLayout>
+            -->
+            <ViewSwitcher
+
+ 		android:id="@+id/view_switcher"
+	                android:orientation="vertical"
+	                android:layout_width="fill_parent"
+	                android:layout_height="100dp"
+	                android:layout_weight="2"
+	                android:background="@color/Holo_gray"
+	                android:layout_gravity="center">
+			
+                
+                
+                            <RelativeLayout
+	                android:id="@+id/camara_layout"
+	                android:orientation="vertical"
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent">
+	
+			    <WebView
+			        android:id="@+id/webview"
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
+			        android:layout_alignParentRight="true"/>
+	
+			    <ProgressBar
+			        android:id="@+id/progressBar"
+			        android:layout_width="70dp"
+			        android:layout_height="70dp"
+
+			        android:layout_centerHorizontal="true"
+			        android:layout_centerVertical="true" />
+			
+			</RelativeLayout>    
+			
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:layout_centerInParent="true"
+                android:layout_gravity="center">
+
+                <ImageButton
+                    android:id="@+id/camButton"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:background="@null"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_cambutton" />
+
+
+
+            </RelativeLayout>
+		            
+
+	        
+	        </ViewSwitcher>
+		            
+            <!--  SEPARADOR 3 COLORES  -->
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:weightSum="3" >
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_red" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_yellow" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_green" >
+	             </LinearLayout> 
+             </LinearLayout>
+            
+                
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="100dp"
+                android:layout_weight="3"
+                android:background="@color/Holo_yellow_light" >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.98"
+                    android:src="@android:drawable/ic_lock_silent_mode_off" />
+
+				<VideoView
+				   android:id="@+id/videoView_layout"
+				   android:layout_width="fill_parent"
+				   android:layout_height="wrap_content" />
+			
+
+            </LinearLayout>
+
+       <!--  </LinearLayout>  -->
+  
+
+</LinearLayout>

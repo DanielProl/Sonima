@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="top"
+    android:orientation="vertical"
+        android:weightSum="20">
+    
+    
+               <LinearLayout
+	                android:id="@+id/layout3"
+	                android:orientation="horizontal"
+	                android:layout_width="fill_parent"
+	                android:layout_height="0dp"
+	                android:background="@color/Holo_gray"
+	                android:layout_gravity="center"
+	                android:layout_weight="2"
+	                android:weightSum="15" >
+                
+                    <ImageButton
+	                    android:id="@+id/backB"
+	                    android:layout_width="60dp"
+	                    android:layout_height="30dp"
+	                    android:background="@null"
+	                    android:layout_marginLeft="5dp"
+	                    android:src="@drawable/icon_back"
+	                    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"/>
+                    
+                    <View
+				        android:layout_width="0dp"
+				        android:layout_height="35dp"
+				        android:layout_weight="5" >
+				    </View>
+				    
+                    <ToggleButton
+	                    android:id="@+id/camB"
+	                    android:layout_width="50dp"
+	                    android:layout_height="30dp" 
+					    android:checked="false"
+					    android:background="@drawable/icon_cam"
+					    android:textOn=""
+					    android:textOff=""
+	                    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"/>
+                    <View
+				        android:layout_width="0dp"
+				        android:layout_height="35dp"
+				        android:layout_weight="5" >
+				    </View>
+				      
+                    <ToggleButton
+	                    android:id="@+id/docB"
+	                    android:layout_width="25dp"
+	                    android:layout_height="30dp" 
+					    android:checked="false"
+					    android:background="@drawable/icon_doc"
+					    android:textOn=""
+					    android:textOff=""
+					    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"
+
+	                />
+                    <View
+				        android:layout_width="0dp"
+				        android:layout_height="35dp"
+				        android:layout_weight="5" >
+				    </View>
+				    
+                    <ToggleButton
+	                    android:id="@+id/cogB"
+	                    android:layout_width="30dp"
+	                    android:layout_height="30dp" 
+					    android:checked="false"
+					    android:background="@drawable/icon_cog"
+					    android:layout_marginRight="25dp"
+					    android:textOn=""
+					    android:textOff=""
+	                    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"
+	                    android:onClick="onSettings"/>
+                    
+             </LinearLayout>
+             
+             		            
+<!--  SEPARADOR 3 COLORES  -->
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:weightSum="3" >
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_red" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_yellow" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_green" >
+	             </LinearLayout> 
+             </LinearLayout>
+<!--  //SEPARADOR 3 COLORES  -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+<!--
+    <TextView
+        android:id="@+id/textview_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dip"
+        android:gravity="center_horizontal" />
+-->
+
+            <ViewSwitcher
+		 		android:id="@+id/view_switcher"
+			    android:orientation="vertical"
+		        android:layout_width="match_parent"
+		        android:layout_height="0dp"
+			    android:background="@color/Holo_gray"
+			    android:layout_weight="7"
+			    android:layout_gravity="center">
+
+	            <RelativeLayout
+		            android:id="@+id/camara_layout"
+		            android:orientation="vertical"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content">
+	                
+				    <com.sonima.app.GStreamerSurfaceView
+				        android:id="@+id/surface_video"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:layout_gravity="center_vertical|center_horizontal"/>
+				</RelativeLayout>
+    
+                <RelativeLayout
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_centerInParent="true"
+	                android:layout_gravity="center">
+
+	                <ImageButton
+	                    android:id="@+id/camButton"
+	                    android:layout_width="100dp"
+	                    android:layout_height="100dp"
+	                    android:background="@null"
+	                    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"
+	                    android:src="@drawable/icon_cambutton" />
+          	  </RelativeLayout>
+    
+    	  </ViewSwitcher>
+    	        
+<!--  SEPARADOR 3 COLORES  -->
+             <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/white"
+                android:weightSum="3" >
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_red" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_yellow" >
+	             </LinearLayout>
+	             <LinearLayout
+	                android:layout_width="fill_parent"
+	                android:layout_height="2dp"
+	                android:layout_weight="1"
+	                android:background="@color/Holo_green" >
+	             </LinearLayout> 
+             </LinearLayout>
+<!--  //SEPARADOR 3 COLORES  -->
+    
+ <!--  BOTONES ORIGINALES 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/button_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/button_play"
+            android:src="@android:drawable/ic_media_play"
+            android:text="@string/button_play" />
+
+        <ImageButton
+            android:id="@+id/button_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/button_stop"
+            android:src="@android:drawable/ic_media_pause"
+            android:text="@string/button_stop" />
+    </LinearLayout>
+ -->
+
+            <ViewSwitcher
+		 		android:id="@+id/view_switcher2"
+			    android:orientation="vertical"
+		        android:layout_width="match_parent"
+		        android:layout_height="0dp"
+			    android:background="@color/Holo_gray"
+			    android:layout_weight="11"
+			    android:layout_gravity="center">
+	 
+                <RelativeLayout
+	                android:id="@+id/camara_layout"
+	                android:orientation="vertical"
+	                android:layout_width="fill_parent"
+	                android:layout_height="fill_parent">
+	
+			    <WebView
+			        android:id="@+id/webview"
+			        android:layout_width="match_parent"
+			        android:layout_height="match_parent"
+			        android:layout_alignParentRight="true"/>
+	
+			    <ProgressBar
+			        android:id="@+id/progressBar"
+			        android:layout_width="70dp"
+			        android:layout_height="70dp"
+			        android:layout_centerHorizontal="true"
+			        android:layout_centerVertical="true" />
+			
+			</RelativeLayout>    
+
+                
+            <RelativeLayout
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_centerInParent="true"
+	                android:layout_gravity="center">
+
+	                <ImageButton
+	                    android:id="@+id/docButton"
+	                    android:layout_width="100dp"
+	                    android:layout_height="100dp"
+	                    android:background="@null"
+	                    android:layout_gravity="center"
+	                    android:scaleType="fitCenter"
+	                    android:src="@drawable/icon_docbutton" />
+          	  </RelativeLayout>
+            
+    	  </ViewSwitcher>
+    
+  
+
+</LinearLayout>

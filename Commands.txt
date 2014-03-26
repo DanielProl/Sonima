@@ -1,0 +1,71 @@
+------------------ USE THIS - RPI->MOBILE ----------------
+360x240:
+
+on RPi:
+raspivid -t 999999 -h 240 -w 360 -fps 25 -b 2000000 -o - | gst-launch-0.10 -v fdsrc ! h264parse ! rtph264pay ! udpsink host=192.168.42.184 port=5000
+
+on Java:
+data->pipeline = gst_parse_launch("udpsrc port=5000 caps=\"application/x-rtp, media=video, clock-rate=90000, encoding-name=H264, sprop-parameter-sets=\\\"J2QAFKwrQLj/LwDxImo\\\\=\\\\,KO4fLA\\\\=\\\\=\\\"\", payload=96\" ! gstrtpjitterbuffer ! rtph264depay ! ffdec_h264 ! decodebin2 ! eglglessink sync=false", &error);
+
+
+PARAMETERS OF UDP (GStreamer 0.10):
+
+(sprop-parameter-sets=(string)\"J2QAFKwrQLj/LwDxImo\\=\\,KO4fLA\\=\\=\", payload=(int)96)
+
+
+
+
+------------------ OTHER OPTION (HD) ----------------
+
+720x1080:
+
+RPi -> MAC:
+on RPi:
+raspivid -t 999999 -h 720 -w 1080 -fps 25 -b 2000000 -o - | gst-launch-0.10 -v fdsrc fd=0 ! h264parse ! rtph264pay ! udpsink host=192.168.42.184 port=5000
+
+on Mac:
+gst-launch-1.0 -v udpsrc port=5000 ! application/x-rtp,payload=(int)96,media=video,clock-rate=(int)90000,encoding-name=(string)H264,sprop-parameter-sets=\"J2QAH6wrQCIC3y8A8SJq\\,KO4CXLA\\=\" ! rtph264depay ! avdec_h264 ! videoconvert ! autovideosink sync=false
+
+RPi -> MOBILE:
+on RPi:
+raspivid -t 999999 -h 720 -w 1080 -fps 25 -b 2000000 -o - | gst-launch-0.10 -v fdsrc ! h264parse ! rtph264pay ! udpsink host=192.168.42.184 port=5000
+
+on Java:
+data->pipeline = gst_parse_launch("udpsrc port=5000 caps=\"application/x-rtp, media=video, clock-rate=90000, encoding-name=H264, sprop-parameter-sets=\\\"J2QAH6wrQCIC3y8A8SJq\\\\,KO4CXLA\\\\=\\\"\", payload=96\" ! gstrtpjitterbuffer ! rtph264depay ! ffdec_h264 ! decodebin2 ! eglglessink sync=false", &error);
+
+
+
+PARAMETERS OF UDP (GStreamer 0.10):
+
+(sprop-parameter-sets=(string)\"J2QAH6wrQCIC3y8A8SJq\\,KO4CXLA\\=\", payload=(int)96)
+
+
+
+
+------------------ MULTICAST (NOT WORKING RIGHT NOW) ----------------
+360x240:
+on RPi:
+raspivid -t 999999 -h 240 -w 360 -fps 25 -b 2000000 -o - | gst-launch-0.10 -v fdsrc ! h264parse ! rtph264pay ! udpsink host=239.0.0.1 auto-multicast=true port=5000
+
+on Mac:
+gst-launch-1.0 -v udpsrc multicast-group=239.0.0.1 port=5000 ! application/x-rtp,payload=96,media=video,clock-rate=90000,encoding-name=H264,sprop-parameter-sets=\"J2QAFKwrQLj/LwDxImo\\=\\,KO4fLA\\=\\=\" ! rtph264depay ! avdec_h264 ! videoconvert ! autovideosink sync=false
+
+on Java:
+data->pipeline = gst_parse_launch("udpsrc multicast-group=239.0.0.1 port=5000 caps=\"application/x-rtp, media=video, clock-rate=90000, encoding-name=H264, sprop-parameter-sets=\\\"J2QAFKwrQLj/LwDxImo\\\\=\\\\,KO4fLA\\\\=\\\\=\\\"\", payload=96\" ! gstrtpjitterbuffer ! rtph264depay ! ffdec_h264 ! decodebin2 ! eglglessink sync=false", &error);
+
+(sprop-parameter-sets=(string)\"J2QAFKwrQLj/LwDxImo\\=\\,KO4fLA\\=\\=\", payload=(int)96)
+
+------------------------------
+
+
+
+
+
+
+
+
+
+
+WITH SOUND:
+
+http://stackoverflow.com/questions/10411329/gstreamer-rtsp-playing-with-sound?rq=1
