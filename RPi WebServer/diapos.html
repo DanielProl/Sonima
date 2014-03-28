@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>SONIMA CLASS: DIAPOSITIVAS</title>
+
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <link href="bootstrap-3.0.0/dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="bootstrap-3.0.0/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="bootstrap-3.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+
+<script src="jquery-2.0.3.js"></script>
+<script type="text/javascript"> 
+
+// Anchos segun dispositivo: http://quirktools.com/screenfly/
+// Variables con with: http://responsejs.com/labs/dimensions/
+
+var ancho=document.documentElement.clientWidth; // OK
+//var ancho=screen.width;
+//var ancho=320;
+
+var asig;
+var tema;
+var sigue;
+
+$("head").append('<style type="text/css">a { color: inherit; text-decoration:none; } body{min-width:' + ancho + ';width:' + ancho + ';max-width:' + ancho + ';margin: 0;padding: 0;border : none;font-size: 11pt;font-family: "Open Sans", sans-serif;background-color: #F7F7F7;}</style>');
+
+//document.body.style.width=screen.width;
+//document.body.style.minWidth=screen.width;
+//document.body.style.maxWidth=screen.width;
+
+function leerGET(){ 
+  var cadGET = location.search.substr(1,location.search.length); 
+  var arrGET = cadGET.split("&"); 
+  var asocGET = new Array(); 
+  var valor = ""; 
+  for(i=0;i<arrGET.length;i++){ 
+    var valor = arrGET[i]; 
+    asocGET[i] = valor; 
+  } 
+  return asocGET; 
+} 
+
+function CargaImagenes(){
+  var Valores = leerGET();
+  asig = Valores[0]; 
+  tema = Valores[1];
+  var i=1;
+
+  var asig2 = asig;
+  if(asig.length > 5 && ancho<400) asig2 = asig.substring(0,5);
+  var tema2 = tema;
+  if(tema.length > 5 && ancho<400) tema2 = tema.substring(0,5);
+  $("#nombre").text(asig2.toUpperCase());
+  $("#nombre").append(' - <i>' + tema2 + '</i>');
+
+  var url
+  sigue=true;
+  while (sigue==true){
+      (function(){
+        var xhr;
+      if (window.XMLHttpRequest){   // Standard object
+          xhr = new XMLHttpRequest();  // Firefox, Safari, ...
+      } else if (window.ActiveXObject){  // Internet Explorer 
+          xhr = new ActiveXObject("Microsoft.XMLHTTP");
+      }
+      url="Asignaturas/" + asig + "/" + tema + "/Diapositiva" + i + ".jpg";
+      xhr.open('GET', url,false);
+      //xhr.responseType = 'arraybuffer';
+      xhr.send(null);
+      xhr.onreadystatechange=State(i,xhr,asig,tema);
+      //xhr.send(null);
+  })();
+    i++;
+
+}
+
+$("body").append('<a name="descarga"></a><br><table border="0" width="' + ancho + '"><tr><td width=100%><center><font size="5"><a href="Asignaturas/' + asig + '/' + tema + '.zip"><i class="icon-download"></i> Descargar tema (.zip)</a></font></center></td></tr></table><br>');
+
+}
+
+function State(j,xhr,asig,tema){
+  if (xhr.readyState==4){ //xhr.DONE
+    if (xhr.status==200){
+      $("body").append('<img src="Asignaturas/' + asig + '/' + tema + '/Diapositiva' + j + '.jpg" border="0" width="'+ ancho + '">');
+      $("body").append('<table border="0" width="' + ancho + '"><tr><td width=10% align="right"><a href="#top"><i class="icon-chevron-sign-up"></i></a></td><td width=80%><hr style="height:1px;width:80%;border:none;color:#000000;background-color:#000000;"></td><td width=10% align="left"><font size="2">' + j + '</font></td></tr></table>');
+    }else{
+        //document.write('Error: i=' + j + ', xhr.status=' + xhr.status);
+        sigue=false;
+    }
+  }else{
+    //document.write('Error: i=' + j + ', xhr.readystate=' + xhr.readyState);
+    sigue=false;
+  }
+}
+
+// PARA VER LA VARIABLE ANCHO:
+// document.write("ANCHO:" + ancho + "<br>");
+</script> 
+
+</head>
+
+<body onLoad="CargaImagenes()">
+
+<table id="top" width=100% style="boder:none;top:0;left:0 ;width: 100%;">
+       <tr valign="middle" height="30"><td class="link" bgcolor="#F8F8F8" width=5%>
+  </td>
+
+  <td width=35% bgcolor="#F9473F">
+  <font color="#FFFFFF" size="1"><center><h5>
+    <div id="nombre">
+
+    </div>
+  </h5></center></font>
+  </td>
+  <td width=30% bgcolor="#F8F8F8" onclick="window.location.href='index.html'">        
+  <center><h5>&Iacutendice</h5></center>
+  </td>
+  <td width=30% bgcolor="#F8F8F8" onclick="window.location.href='#descarga'">
+  <center><h5>Descargar</h5></center>
+  </td>
+  
+  <td bgcolor="#F8F8F8">
+  </td>
+</tr>
+
+<tr><td bgcolor="#F9473F" height="1px" colspan="5">
+</td></tr>
+
+</table>
+
+<!-- 
+
+PHP?
+http://stackoverflow.com/questions/11489738/how-do-i-count-files-in-a-directory-using-jquery
+
+-->
+
+</body>
+</html>
